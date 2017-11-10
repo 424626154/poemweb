@@ -117,3 +117,19 @@ null
 2017-11-10 18:44 +08:00: [0mGET /bootstrap/css/bootstrap.min.css [36m304 [0m1.810 ms - -[0m
 2017-11-10 18:44 +08:00: [36m[2017-11-10 18:44:26.484] [DEBUG] logInfo - [39mGET /bootstrap/js/bootstrap.min.js 304
 2017-11-10 18:44 +08:00: [0mGET /bootstrap/js/bootstrap.min.js [36m304 [0m1.645 ms - -[0m
+2017-11-10 22:28 +08:00: [32m[2017-11-10 22:28:21.166] [INFO] /Users/bingbing/Poem/PoemWeb/dao/dao.js - [39m---mysqldb:default
+2017-11-10 22:28 +08:00: [32m[2017-11-10 22:28:21.172] [INFO] /Users/bingbing/Poem/PoemWeb/dao/dao.js - [39m{ host: '127.0.0.1',
+  user: 'root',
+  password: '890503',
+  database: 'poem',
+  port: 3306,
+  multipleStatements: true }
+2017-11-10 22:28 +08:00: Listening on port 9002
+2017-11-10 22:28 +08:00: [36m[2017-11-10 22:28:34.341] [DEBUG] logInfo - [39mGET /user 200
+2017-11-10 22:28 +08:00: [0mGET /user [32m200 [0m17.489 ms - 3228[0m
+2017-11-10 22:28 +08:00: [36m[2017-11-10 22:28:34.369] [DEBUG] logInfo - [39mGET /bootstrap/js/bootstrap.min.js 200
+2017-11-10 22:28 +08:00: [0mGET /bootstrap/js/bootstrap.min.js [32m200 [0m8.356 ms - 37045[0m
+2017-11-10 22:28 +08:00: [36m[2017-11-10 22:28:34.371] [DEBUG] logInfo - [39mGET /bootstrap/css/bootstrap.min.css 200
+[0mGET /bootstrap/css/bootstrap.min.css [32m200 [0m8.568 ms - 121200[0m
+2017-11-10 22:28 +08:00: [36m[2017-11-10 22:28:34.552] [DEBUG] logInfo - [39mGET /favicon.ico 404
+2017-11-10 22:28 +08:00: [0mGET /favicon.ico [33m404 [0m3.078 ms - 1228[0m
