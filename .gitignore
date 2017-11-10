@@ -2,4 +2,3 @@ node_modules/
 conf/
 logs/
 pm2/
-build/
