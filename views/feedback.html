@@ -1,4 +1,8 @@
 <% include header.html %>
+<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li class="active">意见反馈</li>
+	</ol>
     <div >
       <%if(err){%>  
          <div class="alert alert-danger" role="alert">
@@ -19,8 +23,7 @@
 					    	<%}%>  
 					    	<%if(obj.contact){%> 
 					    	联系方式:<%= obj.contact %>
-					    	<%}%>  
-					    		
+					    	<%}%>  					    		
 					    </p>
 		      		</div>
 		      		<div class="col-md-2 ">

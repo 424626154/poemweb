@@ -1,0 +1,58 @@
+<% include header.html %>
+	<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/report">举报消息</a></li>
+	  <li class="active">详情</li>
+	</ol>
+	<div >
+      <%if(err){%>  
+         <div class="alert alert-danger" role="alert">
+          <h5><%= err %></h5>
+        </div>
+      <%}%>  
+
+      <div class="row">
+  		<div class="col-md-12">
+  			<h4 class="list-group-item-heading">举报内容:<%= obj.report %></h4>
+  			<h4 class="list-group-item-heading">自定义举报内容:<%= obj.custom %></h4>
+		    <p class="list-group-item-text">
+		    	<%if(obj.userid){%> 
+		    	举报者ID:<%= obj.userid %>  
+		    	<%}%>  					    		
+		    </p>
+		    <p class="list-group-item-text">
+		    	<%if(obj.ruserid){%> 
+		    	被举报者ID:<%= obj.ruserid %>  
+		    	<%}%>  					    		
+		    </p>
+		    <p class="list-group-item-text">
+		    	<%if(obj.type == 1){%> 
+		    		<%if(obj.rid){%> 
+				    	作品ID:<%= obj.rid %>  
+			    	<%}%> 
+		    	<%}%>  					    		
+		    </p>
+		    <div class="pull-right">
+		    <!-- YYYY年MM月DD日hh:mm:ss dddd		    	 -->
+		    	<%= moment(obj.time*1000).format('YYYY年MM月DD日hh:mm') %>
+		    </div>
+		    <br>
+		    <div class="pull-right">
+		    	<%if(obj.type == 1){%> 
+			    	<div class="btn-group" role="group" aria-label="...">
+			    		<%if(obj.state == 0){%>
+					  	<a type="button" href='/report/info?op=delpoem&id=<%= obj.id %>' class="btn btn-default">删除作品</a>
+					  	<a type="button" href='/report/info?op=ignore&id=<%= obj.id %>' type="button" class="btn btn-default">忽略</a> 
+					    <%}else if(obj.state == 1) {%> 
+					    <a type="button" type="button" class="btn btn-default">已忽略</a> 
+					    <%}else if(obj.state == 2) {%> 
+					    <a type="button" type="button" class="btn btn-default">作品已删除</a> 
+				    	<%}%> 			    			    	
+					  	<a type="button" href='/report/info?op=del&id=<%= obj.id %>' class="btn btn-danger">删除</a>
+					</div>
+		    	<%}%>  	
+		    </div>	
+  		</div>
+  	</div>
+    </div> 
+<% include footer.html %>

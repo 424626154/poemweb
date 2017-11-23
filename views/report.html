@@ -1,0 +1,57 @@
+<% include header.html %>
+	<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li class="active">举报消息</li>
+	</ol>
+	<div >
+      <%if(err){%>  
+         <div class="alert alert-danger" role="alert">
+          <h5><%= err %></h5>
+        </div>
+      <%}%>  
+
+      <% if (objs.length) { %>  
+		  <ul class="list-group">  
+		    <% objs.forEach(function(obj){ %>  
+		      <a href="report/info?id=<%= obj.id %>" class="list-group-item">
+		      	<div class="row">
+		      		<div class="col-md-12">
+		      			<h4 class="list-group-item-heading">举报内容:<%= obj.report %></h4>
+		      			<h4 class="list-group-item-heading">自定义举报内容:<%= obj.custom %></h4>
+					    <p class="list-group-item-text">
+					    	<%if(obj.userid){%> 
+					    	举报者ID:<%= obj.userid %>  
+					    	<%}%>  					    		
+					    </p>
+					    <p class="list-group-item-text">
+					    	<%if(obj.ruserid){%> 
+					    	被举报者ID:<%= obj.ruserid %>  
+					    	<%}%>  					    		
+					    </p>
+					    <p class="list-group-item-text">
+					    	<%if(obj.type == 1){%> 
+					    		<%if(obj.rid){%> 
+							    	作品ID:<%= obj.rid %>  
+						    	<%}%> 
+					    	<%}%>  					    		
+					    </p>
+					    <div class="pull-right">
+					    <!-- YYYY年MM月DD日hh:mm:ss dddd		    	 -->
+					    	<%= moment(obj.time*1000).format('YYYY年MM月DD日hh:mm') %>
+					    </div>
+					    <br>
+					    <div class="pull-right">
+					    	<%if(obj.state == 0){%> 
+						    	<span class="label label-default">未处理</span>
+					    	<%}else{%>
+					    		<span class="label label-primary">已处理</span>
+					    	<%}%> 
+					    </div>
+		      		</div>
+		      	</div>	
+		      </a>  
+		    <% }) %>  
+		  </ul>  
+	  <% } %>  
+    </div> 
+<% include footer.html %>
