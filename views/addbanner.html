@@ -1,0 +1,45 @@
+<% include header.html %>
+	<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/banner">banner系统</a></li>
+	  <li class="active">添加banner</li>
+	</ol>
+    <div >	
+    	<%if(err){%>  
+         <div class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5><%= err %></h5>
+        </div>
+      <%}%>  
+
+      <form id="add" name="add" method="post" action="/banner/addbanner" enctype="multipart/form-data" >
+        <div class="form-group">
+          <label for="">标题</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" >
+      	</div>
+        <div class="form-group">
+          <label for="">描述</label>
+          <textarea class="form-control" rows="3" placeholder="输入描述" id="content" name="content" ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">外链</label>
+          <input type="text" class="form-control" id="url" name="url" placeholder="输入链接地址" >
+      	</div>
+        <div class="form-group">
+          <label for="">作品ID</label>
+          <input type="number" class="form-control" id="pid" name="pid" placeholder="输入作品id" >
+        </div>
+        <div class="form-group">
+          <label for="">选择类型</label>
+          <label class="radio-inline">
+            <input type="radio" name="type" id="web" value="web" checked>页面
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="type" id="poem" value="poem">作品
+          </label>
+        </div>  
+        <button class="btn btn-default" type="submit" >发布</button>
+      </form>
+
+    </div>
+<% include footer.html %>

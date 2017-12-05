@@ -14,6 +14,8 @@ var message = require('./routes/message');
 var feedback = require('./routes/feedback');
 var sms = require('./routes/sms');
 var report = require('./routes/report');
+var banner = require('./routes/banner');
+var appweb = require('./routes/appweb');
 
 var app = express();
 
@@ -42,6 +44,8 @@ app.use('/message', message);
 app.use('/feedback', feedback);
 app.use('/sms', sms);
 app.use('/report', report);
+app.use('/banner', banner);
+app.use('/appweb', appweb);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,44 @@
+<% include header.html %>
+	<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li class="active">banner系统</li>
+	</ol>
+    <div >
+      <a class="btn btn-default" href='/banner/addbanner'>添加banner</a>
+      <% if (objs.length) { %>  
+		  <ul class="list-group">  
+		    <% objs.forEach(function(obj){ %>  
+		      <a class="list-group-item">
+		      	<div class="row">
+		      		<div class="col-md-12">
+		      			<h4 class="list-group-item-heading">标题:<%= obj.title %></h4>
+		      			<p class="list-group-item-text">描述:<%= obj.content %></p>
+					    <p class="list-group-item-text">
+					    	<%if(obj.type == 1){%> 
+					    	外链:<%= obj.url %>  
+					    	<%}%>  					    		
+					    </p>
+					    <div class="pull-right">
+							<%if(obj.state == 0){%> 
+								<button class="label label-default" onclick="location.href='/banner?op=state1&id=<%= obj.id %>'">上线</button>
+						    	<button class="label label-danger" onclick="location.href='/banner?op=del&id=<%= obj.id %>'">删除</button>
+					    	<%}else{%>
+					    		<button class="label label-success" onclick="location.href='/banner?op=state0&id=<%= obj.id %>'">下线</button>
+						    	<button class="label label-danger" onclick="location.href='/banner?op=del&id=<%= obj.id %>'">删除</button>
+					    	<%}%> 
+					    </div>	
+					    <br>
+					    <br>
+					    <div class="pull-right">
+					    <!-- YYYY年MM月DD日hh:mm:ss dddd		    	 -->
+					    	<%= moment(obj.time*1000).format('YYYY年MM月DD日hh:mm') %>
+					    </div>
+					    <br>
+		      		</div>
+		      	</div>	
+		      </a>  
+		    <% }) %>  
+		  </ul>  
+	  <% } %>  
+    </div>
+<% include footer.html %>
