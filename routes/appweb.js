@@ -16,4 +16,8 @@ router.get('/banner', function(req, res, next) {
 	res.render('appweb_banner');
 });
 
+router.get('/googleplay', function(req, res, next) {
+	res.render('appweb_googleplay');
+});
+
 module.exports = router;
