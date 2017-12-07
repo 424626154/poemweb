@@ -67,7 +67,7 @@ router.get('/addbanner', function(req, res, next) {
 });
 /**
  * 添加banner
- * @param  type 1 页面 2 作品
+ * @param  type 1 页面 2 作品 3 名家
  */
 router.post('/addbanner',multipartMiddleware,function(req, res, next){
   var user = req.cookies.user;
@@ -120,6 +120,22 @@ router.post('/addbanner',multipartMiddleware,function(req, res, next){
   				}
   			});
   		}
+    }else if(type == 'famous'){
+      var pid = body.pid;
+      if(!pid){
+        err = "名家作品id错误!";
+        res.render('addbanner', { user: user,err:err});
+      }else{
+        btype = 3;
+        bannerDao.addBanner(title,content,btype,'',pid,function(err,result){
+          if(err){
+            logger.error(err)
+            res.render('addbanner', { user: user,err:err});
+          }else{
+            res.redirect("/banner");
+          }
+        });
+      }
   	}else{
   		err = '类型错误';
   		res.render('addbanner', { user: user,err:err});
