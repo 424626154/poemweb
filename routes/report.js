@@ -106,6 +106,41 @@ router.get('/info', function(req, res, next) {
 		}
 		return
 	}
+	if(op == 'revises'){
+		if(id){
+			reportDao.upReportState(id,2,function(err,result){
+				reportDao.queryReport(id,function(err,result){
+						if(err){
+						 	res.render('report_info', { user: user,err:err,obj:null});
+						}else{
+							let obj ;
+							if(result.length > 0 ){
+								obj = result[0];
+							}
+							let body = {
+						
+							}
+							if(obj.type == 1){
+								body.id = obj.rid;
+								body.userid = obj.ruserid;
+								let reason = obj.report;
+								if(reason){
+									reason +='|'
+								}
+								reason += obj.custom;
+								body.reason = reason;
+							}
+							if(err){
+								res.render('report_info', { user: user,err:err,obj:obj});
+							}else{
+								res.render('report_info', { user: user,err:'',obj:obj});
+							}
+						}
+					});
+			});
+		}
+		return
+	}
 	renderInfo(user,id,res,null);
 });
 

@@ -30,6 +30,10 @@
 		    		<%if(obj.rid){%> 
 				    	作品ID:<%= obj.rid %>  
 			    	<%}%> 
+			    <%}else if(obj.type == 2){%> 
+		    		<%if(obj.rid){%> 
+				    	名言ID:<%= obj.rid %>  
+			    	<%}%> 
 		    	<%}%>  					    		
 		    </p>
 		    <div class="pull-right">
@@ -47,6 +51,18 @@
 					    <a type="button" type="button" class="btn btn-default">已忽略</a> 
 					    <%}else if(obj.state == 2) {%> 
 					    <a type="button" type="button" class="btn btn-default">作品已删除</a> 
+				    	<%}%> 			    			    	
+					  	<a type="button" href='/report/info?op=del&id=<%= obj.id %>' class="btn btn-danger">删除</a>
+					</div>
+				<%}else if(obj.type == 2){%> 
+					<div class="btn-group" role="group" aria-label="...">
+			    		<%if(obj.state == 0){%>
+					  	<a type="button" href='/report/info?op=revises&id=<%= obj.id %>' class="btn btn-default">修正</a>
+					  	<a type="button" href='/report/info?op=ignore&id=<%= obj.id %>' type="button" class="btn btn-default">忽略</a> 
+					    <%}else if(obj.state == 1) {%> 
+					    <a type="button" type="button" class="btn btn-default">已忽略</a> 
+					    <%}else if(obj.state == 2) {%> 
+					    <a type="button" type="button" class="btn btn-default">作品已修正</a> 
 				    	<%}%> 			    			    	
 					  	<a type="button" href='/report/info?op=del&id=<%= obj.id %>' class="btn btn-danger">删除</a>
 					</div>
