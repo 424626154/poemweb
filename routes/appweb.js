@@ -20,4 +20,8 @@ router.get('/googleplay', function(req, res, next) {
 	res.render('appweb_googleplay');
 });
 
+router.get('/download', function(req, res, next) {
+	res.render('appweb_download');
+});
+
 module.exports = router;
