@@ -1,4 +1,16 @@
 <% include header.html %>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(<%= obj.type %> == 1){
+        $("#web").attr("checked",true);
+    }else if(<%= obj.type %> == 2){
+        $("#poem").attr("checked",true);
+    }else if(<%= obj.type %> == 3){
+        $("#famous").attr("checked",true);
+    }
+  })
+</script>
 	<ol class="breadcrumb " style="background: transparent;">
 	  <li><a href="/">Home</a></li>
 	  <li><a href="/banner">banner系统</a></li>
@@ -12,22 +24,23 @@
         </div>
       <%}%>  
 
-      <form id="add" name="add" method="post" action="/banner/addbanner" enctype="multipart/form-data" >
+      <form id="add" name="add" method="post" action="/banner/upbanner" enctype="multipart/form-data" >
+        <input type="hidden" class="form-control" id="id" name="id" placeholder="输入标题" value="<%= obj.id %>">
         <div class="form-group">
           <label for="">标题</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" >
+          <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" value="<%= obj.title %>">
       	</div>
         <div class="form-group">
           <label for="">描述</label>
-          <textarea class="form-control" rows="3" placeholder="输入描述" id="content" name="content" ></textarea>
+          <textarea class="form-control" rows="3" placeholder="输入描述" id="content" name="content" ><%= obj.content %></textarea>
         </div>
         <div class="form-group">
           <label for="">外链</label>
-          <input type="text" class="form-control" id="url" name="url" placeholder="输入链接地址" >
+          <input type="text" class="form-control" id="url" name="url" placeholder="输入链接地址" value="<%= obj.url %>">
       	</div>
         <div class="form-group">
           <label for="">作品ID</label>
-          <input type="number" class="form-control" id="pid" name="pid" placeholder="输入作品id" >
+          <input type="number" class="form-control" id="pid" name="pid" placeholder="输入作品id" value="<%= obj.pid %>" >
         </div>
         <div class="form-group">
           <label for="">作者名称</label>
@@ -45,7 +58,7 @@
             <input type="radio" name="type" id="famous" value="famous">名家
           </label>
         </div>  
-        <button class="btn btn-default" type="submit" >发布</button>
+        <button class="btn btn-default" type="submit" >修改</button>
       </form>
 
     </div>
