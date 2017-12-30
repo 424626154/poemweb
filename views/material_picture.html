@@ -1,0 +1,56 @@
+<% include header.html %>
+	<ol class="breadcrumb " style="background: transparent;">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/material">素材</a></li>
+	  <li class="active">图片</li>
+	</ol>
+    <div >
+     <%if(err){%>  
+         <div class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5><%= err %></h5>
+        </div>
+      <%}%>  
+
+     <div class="pull-right">
+     	<form id="add" name="add" method="post" action="/material/picture" enctype="multipart/form-data" >
+     		<div class="input-group">
+		      <input id="file" type="file" accept="image/png,image/jpg,image/gif" name="file" />
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="submit" >上传</button>
+		      </span>
+		    </div><!-- /input-group -->
+     	</form>
+     </div>
+     <br>
+     <br>
+      <% if (objs.length) { %>  
+		  <ul class="list-group">  
+		    <% objs.forEach(function(obj){ %>  
+		      <a class="list-group-item">
+		      	<div class="row">
+		      		<div class="col-md-12">
+		      			<div>
+					      <img src="/pictures/<%= obj.image %>" alt="localhost:9002/pictures/<%= obj.image %>">
+					    </div>
+					    <div>
+					    	<p>http://localhost:9002/pimage/<%= obj.image %></p>
+					    </div>	
+					    <div class="pull-right">
+							<button class="label label-danger" onclick="location.href='/material/picture?op=del&id=<%= obj.id %>'">删除</button>
+					    </div>	
+					    <br>
+					    <br>
+					    <div class="pull-right">
+					    <!-- YYYY年MM月DD日hh:mm:ss dddd		    	 -->
+					    	<%= moment(obj.time*1000).format('YYYY年MM月DD日hh:mm') %>
+					    </div>
+					    <br>
+		      		</div>
+		      	</div>	
+		      </a>  
+		    <% }) %>  
+		  </ul>  
+	  <% } %>  
+    </div>
+<% include footer.html %>

@@ -16,6 +16,8 @@ var sms = require('./routes/sms');
 var report = require('./routes/report');
 var banner = require('./routes/banner');
 var appweb = require('./routes/appweb');
+var material = require('./routes/material');
+var pimage = require('./routes/pimage');
 
 var app = express();
 
@@ -37,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/pictures',express.static(path.join(__dirname, 'pictures')));
 
 app.use('/', home);
 app.use('/user', user);
@@ -46,6 +49,8 @@ app.use('/sms', sms);
 app.use('/report', report);
 app.use('/banner', banner);
 app.use('/appweb', appweb);
+app.use('/material', material);
+app.use('/pimage', pimage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
