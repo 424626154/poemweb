@@ -26,6 +26,10 @@
 					    	<%}%>  					    		
 					    </p>
 		      		</div>
+		      		<div class="pull-right">
+					    <!-- YYYY年MM月DD日hh:mm:ss dddd		    	 -->
+					    	<%= moment(obj.time*1000).format('YYYY年MM月DD日hh:mm') %>
+					</div>
 		      		<div class="col-md-2 ">
 		      			<a href='/feedback?op=del&id=<%= obj.id %>' type="button" class="btn btn-danger pull-right">删除</a>
 		      		</div>
